@@ -12,8 +12,6 @@ PORT = int(os.getenv("BANK_PORT", "8003"))
 MEMORY_URL = os.getenv("MEMORY_URL", "http://inmemory:8005")
 JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret")
 COOKIE_NAME = os.getenv("AUTH_COOKIE", "bezum_jwt")
-FLAG_BANK_SSRF = os.getenv("FLAG_BANK_SSRF", "flag{placeholder}")
-
 SHOP = [
     {"id": "hat-spark", "title": "Spark Hat", "price": 45, "color": "rbpink"},
     {"id": "jacket-navy", "title": "Navy Jacket", "price": 80, "color": "rbnavy"},
@@ -169,5 +167,4 @@ async def bank_preview(payload: PreviewPayload, bezum_jwt: str | None = Cookie(d
         "target": payload.url,
         "status": response.status_code,
         "preview": response.text[:500],
-        "hint": FLAG_BANK_SSRF,
     }
